@@ -1,0 +1,22 @@
+body, html {
+        height: 100%;
+        margin: 0;
+    }
+    .bg-img {
+        /* Путь к вашему фоновому изображению */
+        background-image: url('college.jpg');
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        font-family: Arial, sans-serif;
+    }
+    .title {
+        color: #ffffff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 50px;
+    }
