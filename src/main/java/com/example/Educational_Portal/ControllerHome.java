@@ -11,4 +11,8 @@ public class ControllerHome {
     private String getInfo() {
         return "home_page";
     }
+    @GetMapping("/stylesheet.css")
+    private String getCSS() {
+        return "stylesheet";
+    }
 }
