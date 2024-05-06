@@ -5,6 +5,7 @@ import com.example.Educational_Portal.hibernate.Materials;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
@@ -24,8 +25,9 @@ public class ControllerHome {
         return "stylesheet";
     }
     @GetMapping("/materials")
-    private String getMaterials() {
-        List<Materials>
+    private String getMaterials(Model model) {
+        List<Materials> materials = getMaterialsList();
+        model.addAttribute("materials", materials);
         return "materials";
     }
     /**

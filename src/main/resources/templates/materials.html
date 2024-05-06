@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Учебные материалы</title>
-    <link ref = "stylesheet" href = "css/bootstrap_styles.css">
+    <link type="text/css" rel ="stylesheet" th:href="@{css/bootstrap.css}">
 </head>
 <body>
 <div class="container">
@@ -13,8 +13,7 @@
         <thead class="thead-dark">
         <tr>
             <td>ID</td>
-            <td>Имя</td>
-            <td>Фамилия</td>
+            <td>Наименование</td>
             <td></td>
             <td></td>
         </tr>
@@ -22,7 +21,7 @@
         <tbody>
         <tr th:each="material : ${materials}">
             <td th:text="${material.id}"/>
-            <td th:text="${material.name}"/>
+            <td th:text="${material.material_name}"/>
             <td><a class="btn btn-secondary" th:href="@{'/details/' + ${material.id}}">Выбрать</a></td>
         </tr>
         </tbody>
