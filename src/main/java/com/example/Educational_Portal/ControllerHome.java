@@ -25,6 +25,7 @@ public class ControllerHome {
     }
     @GetMapping("/materials")
     private String getMaterials() {
+        List<Materials>
         return "materials";
     }
     /**
