@@ -15,4 +15,8 @@ public class ControllerHome {
     private String getCSS() {
         return "stylesheet";
     }
+    @GetMapping("/materials")
+    private String getMaterials() {
+        return "materials";
+    }
 }
