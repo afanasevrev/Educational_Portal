@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Учебные материалы</title>
-    <link type="text/css" rel ="stylesheet" th:href="@{css/bootstrap.css}">
+    <link type="text/css" rel ="stylesheet" th:href="@{css/bootstrap_styles.css}">
 </head>
 <body>
 <div class="container">
@@ -14,15 +14,13 @@
         <tr>
             <td>ID</td>
             <td>Наименование</td>
-            <td></td>
-            <td></td>
         </tr>
         </thead>
         <tbody>
         <tr th:each="material : ${materials}">
             <td th:text="${material.id}"/>
             <td th:text="${material.material_name}"/>
-            <td><a class="btn btn-secondary" th:href="@{'/details/' + ${material.id}}">Выбрать</a></td>
+            <td><a class="btn btn-secondary" th:href="@{'/download/' + ${material.id}}">Скачать</a></td>
         </tr>
         </tbody>
     </table>
