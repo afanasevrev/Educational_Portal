@@ -19,4 +19,29 @@ body, html {
         transform: translate(-50%, -50%);
         font-size: 40px;
     }
+    .topnav {
+        overflow: hidden;
+        background-color: #333;
+        position: fixed; /* Фиксированное положение в верхней части страницы */
+        width: 100%;
+        top: 0; /* Прижать к верху страницы */
+        z-index: 1000; /* Убедитесь, что навигация всегда сверху других элементов */
+    }
+    .topnav a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    .topnav a.active {
+        background-color: #4CAF50;
+        color: white;
+    }
     
