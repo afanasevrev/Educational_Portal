@@ -49,7 +49,7 @@ public class ControllerHome {
             materialsTemp.add(new MaterialsTemp(material.getId(), material.getMaterial_name()));
         }
         model.addAttribute("materialsTemp", materialsTemp);
-        return "materialsTemp";
+        return "materials_for_admins";
     }
     /**
      * Страница для администраторов системы

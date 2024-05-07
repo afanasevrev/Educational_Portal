@@ -2,12 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Учебные материалы</title>
+    <title>Студенты</title>
     <link type="text/css" rel ="stylesheet" th:href="@{css/bootstrap_styles.css}">
 </head>
 <body>
 <div class="container">
-    <h1>Список учебных материалов</h1>
+    <h1>Список студентов</h1>
     <span th:if="${students.size() == 0}">Список студентов пустой</span>
     <table th:if="${students.size() > 0}" class="table table-hover">
         <thead class="thead-dark">
