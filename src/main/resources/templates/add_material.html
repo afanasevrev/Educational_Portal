@@ -12,11 +12,11 @@
     <form th:action="@{/materials_for_admins/add}" th:object="${materials}" method="post">
         <div class="form-group">
             <label for="material_nameField">Наименование материала</label>
-            <input type="text" class="form-control" id="material_nameField" th:field="*{material_name}" placeholder="Введите тия файла">
+            <input type="text" class="form-control" id="material_nameField" th:field="*{material_name}" placeholder="Введите имя файла">
         </div>
         <div class="form-group">
             <label for="pdf_fileField">Файл pdf</label>
-            <input type="text" class="form-control" id="pdf_fileField" th:field="*{pdf_file}" placeholder="Выберите файл">
+            <input type="file" class="form-control" id="pdf_fileField" th:field="*{pdf_file}" accept="application/pdf" placeholder="Выберите файл">
         </div>
         <button type="submit" class="btn btn-primary">Отправить</button>
     </form>
