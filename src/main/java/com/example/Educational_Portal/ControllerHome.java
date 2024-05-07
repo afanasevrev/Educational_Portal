@@ -42,9 +42,25 @@ public class ControllerHome {
         model.addAttribute("materialsTemp", materialsTemp);
         return "materials";
     }
+    /**
+     * Страница для администраторов системы
+     * @return admins_page.html
+     */
     @GetMapping("/admins_page")
     private String getAdminsPage() {
         return "admins_page";
+    }
+    /**
+     * Страница список студентов для
+     * администраторов системы
+     * @param model список студентов
+     * @return students.html
+     */
+    @GetMapping("/students")
+    private String getStudents(Model model) {
+        List<Students> students = getStudentsList();
+        model.addAttribute("students", students);
+        return "students";
     }
     /**
      * Метод возвращает из БД список материалов
