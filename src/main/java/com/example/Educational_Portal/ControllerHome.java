@@ -1,5 +1,6 @@
 package com.example.Educational_Portal;
 
+import com.example.Educational_Portal.Temp.MaterialsTemp;
 import com.example.Educational_Portal.db.Admins;
 import com.example.Educational_Portal.db.Students;
 import com.example.Educational_Portal.hibernate.HibernateUtil;
@@ -29,7 +30,11 @@ public class ControllerHome {
     @GetMapping("/materials")
     private String getMaterials(Model model) {
         List<Materials> materials = getMaterialsList();
-        model.addAttribute("materials", materials);
+        List<MaterialsTemp> materialsTemp = new ArrayList<>();
+        for (Materials material: materials) {
+            materialsTemp.add(new MaterialsTemp(material.getId(), material.getMaterial_name()));
+        }
+        model.addAttribute("materialsTemp", materialsTemp);
         return "materials";
     }
     /**

@@ -8,8 +8,8 @@
 <body>
 <div class="container">
     <h1>Список учебных материалов</h1>
-    <span th:if="${materials.size() == 0}">Список материалов пустой</span>
-    <table th:if="${materials.size() > 0}" class="table table-hover">
+    <span th:if="${materialsTemp.size() == 0}">Список материалов пустой</span>
+    <table th:if="${materialsTemp.size() > 0}" class="table table-hover">
         <thead class="thead-dark">
         <tr>
             <td>ID</td>
@@ -17,10 +17,10 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="material : ${materials}">
-            <td th:text="${material.id}"/>
-            <td th:text="${material.material_name}"/>
-            <td><a class="btn btn-secondary" th:href="@{'/download/' + ${material.id}}">Скачать</a></td>
+        <tr th:each="materialTemp : ${materialsTemp}">
+            <td th:text="${materialTemp.id}"/>
+            <td th:text="${materialTemp.material_name}"/>
+            <td><a class="btn btn-secondary" th:href="@{'/download/' + ${materialTemp.id}}">Скачать</a></td>
         </tr>
         </tbody>
     </table>
