@@ -1,5 +1,7 @@
 package com.example.Educational_Portal;
 
+import com.example.Educational_Portal.db.Admins;
+import com.example.Educational_Portal.db.Students;
 import com.example.Educational_Portal.hibernate.HibernateUtil;
 import com.example.Educational_Portal.db.Materials;
 import org.hibernate.Session;
@@ -34,7 +36,7 @@ public class ControllerHome {
      * Метод возвращает из БД список материалов
      * @return массив Materials
      */
-    private synchronized List<Materials> getMaterialsList() {
+     public synchronized List<Materials> getMaterialsList() {
         Transaction transaction = null;
         List<Materials> materials = new ArrayList<>();
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -46,5 +48,39 @@ public class ControllerHome {
             e.printStackTrace();
         }
         return materials;
+    }
+    /**
+     * Метод возвращает из БД список студентов
+     * @return массив Students
+     */
+    private synchronized List<Students> getStudentsList() {
+        Transaction transaction = null;
+        List<Students> students = new ArrayList<>();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            students = session.createQuery("from Students", Students.class).list();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return students;
+    }
+    /**
+     * Метод возвращает из БД список администраторов
+     * @return массив Admins
+     */
+    public synchronized List<Admins> getAdminsList() {
+        Transaction transaction = null;
+        List<Admins> admins = new ArrayList<>();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            admins = session.createQuery("from Admins", Admins.class).list();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return admins;
     }
 }
