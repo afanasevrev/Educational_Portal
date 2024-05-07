@@ -250,4 +250,25 @@ public class ControllerHome {
             e.printStackTrace();
         }
     }
+    /**
+     * Метод удаляет из БД материал
+     * @param id
+     */
+    public synchronized void deleteMaterial(int id) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            Materials material = session.get(Materials.class, id);
+            //Удаляем строку
+            session.delete(material);
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
 }
