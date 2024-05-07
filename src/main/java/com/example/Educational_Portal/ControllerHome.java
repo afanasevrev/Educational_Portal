@@ -9,9 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +42,11 @@ public class ControllerHome {
         model.addAttribute("materialsTemp", materialsTemp);
         return "materials";
     }
+    /**
+     * Страница со списком материалов для администраторов
+     * @param model список материалов
+     * @return materials_for_admins.html
+     */
     @GetMapping("/materials_for_admins")
     private String getMaterialsForAdmins(Model model) {
         List<Materials> materials = getMaterialsList();
@@ -78,9 +81,9 @@ public class ControllerHome {
      * @return home_page.html
      */
     @PostMapping("/admins_page/add")
-    private String addAdmin(@PathVariable Admins admins, Model model) {
+    private String addAdmin(@ModelAttribute Admins admins, Model model) {
         System.out.println(admins.getName());
-        return "home_page";
+        return "add_admin";
     }
     /**
      * Страница список студентов для
