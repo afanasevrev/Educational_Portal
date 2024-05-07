@@ -71,6 +71,11 @@ public class ControllerHome {
         model.addAttribute("admins", new Admins());
         return "add_admin";
     }
+    @PostMapping("/admins_page/add")
+    private String addAdmin(@PathVariable Admins admins, Model model) {
+        System.out.println(admins.getName());
+        return "home_page";
+    }
     /**
      * Страница список студентов для
      * администраторов системы
@@ -82,11 +87,6 @@ public class ControllerHome {
         List<Students> students = getStudentsList();
         model.addAttribute("students", students);
         return "students";
-    }
-    @PostMapping("/admins_page/add/admin")
-    private String addAdmin(@PathVariable Admins admins, Model model) {
-        System.out.println(admins.getName());
-        return "home_page";
     }
     /**
      * Метод возвращает из БД список материалов

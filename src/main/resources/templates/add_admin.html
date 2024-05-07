@@ -10,7 +10,7 @@
 <div class="container mt-5">
     <h2>Форма ввода данных</h2>
     <!-- Форма с использованием Thymeleaf -->
-    <form action="#" th:action="@{/admins_page/add/admin}" th:object="${admins}" method="post">
+    <form th:action="@{/admins_page/add}" th:object="${admins}" method="post">
         <div class="form-group">
             <label for="surnameField">Фамилия</label>
             <!-- Связывание поля ввода с полем surname в модели данных на сервере -->
