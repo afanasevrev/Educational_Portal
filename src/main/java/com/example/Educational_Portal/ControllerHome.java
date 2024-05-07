@@ -60,6 +60,14 @@ public class ControllerHome {
         return "admins_page";
     }
     /**
+     * Откроется форма для добавления администратора
+     * @return add_admin.html
+     */
+    @GetMapping("/admins_page/add")
+    private String addAdmin() {
+        return "add_admin";
+    }
+    /**
      * Страница список студентов для
      * администраторов системы
      * @param model список студентов
