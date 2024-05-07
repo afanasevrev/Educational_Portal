@@ -81,7 +81,7 @@ public class ControllerHome {
      */
     @PostMapping("/admins_page/add")
     private String addAdmin(@ModelAttribute Admins admins, Model model) {
-        System.out.println(admins.getName());
+        writeAdmin(admins);
         return "add_admin";
     }
     /**
@@ -103,7 +103,7 @@ public class ControllerHome {
     }
     @PostMapping("/materials_for_admins/add")
     private String addMaterial(@ModelAttribute Materials materials, Model model) {
-        System.out.println(materials.getPdf_file());
+        writeMaterial(materials);
         return "add_material";
     }
     /**
