@@ -42,6 +42,10 @@ public class ControllerHome {
         model.addAttribute("materialsTemp", materialsTemp);
         return "materials";
     }
+    @GetMapping("/admins_page")
+    private String getAdminsPage() {
+        return "admins_page";
+    }
     /**
      * Метод возвращает из БД список материалов
      * @return массив Materials
