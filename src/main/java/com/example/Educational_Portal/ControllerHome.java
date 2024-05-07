@@ -71,6 +71,12 @@ public class ControllerHome {
         model.addAttribute("admins", new Admins());
         return "add_admin";
     }
+    /**
+     * Post - запрос от клиента на добавление администратора в БД
+     * @param admins
+     * @param model
+     * @return home_page.html
+     */
     @PostMapping("/admins_page/add")
     private String addAdmin(@PathVariable Admins admins, Model model) {
         System.out.println(admins.getName());
