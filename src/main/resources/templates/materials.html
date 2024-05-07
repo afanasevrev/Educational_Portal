@@ -20,7 +20,7 @@
         <tr th:each="materialTemp : ${materialsTemp}">
             <td th:text="${materialTemp.id}"/>
             <td th:text="${materialTemp.material_name}"/>
-            <td><a class="btn btn-secondary" th:href="@{'/download/' + ${materialTemp.id}}">Скачать</a></td>
+            <td><a class="btn btn-secondary" th:href="@{'/materials/download/' + ${materialTemp.id}}">Скачать</a></td>
         </tr>
         </tbody>
     </table>
