@@ -10,6 +10,9 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,7 +67,7 @@ public class ControllerHome {
      * @return add_admin.html
      */
     @GetMapping("/admins_page/add")
-    private String addAdmin() {
+    private String addAdminForm() {
         return "add_admin";
     }
     /**
@@ -78,6 +81,10 @@ public class ControllerHome {
         List<Students> students = getStudentsList();
         model.addAttribute("students", students);
         return "students";
+    }
+    @PostMapping("/admins_page/add/admin")
+    private String addAdmin(@PathVariable Admins admins, Model model) {
+        return "admins_page";
     }
     /**
      * Метод возвращает из БД список материалов
