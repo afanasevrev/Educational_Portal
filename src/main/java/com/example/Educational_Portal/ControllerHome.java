@@ -96,6 +96,16 @@ public class ControllerHome {
         model.addAttribute("students", students);
         return "students";
     }
+    @GetMapping("/materials_for_admins/add")
+    private String addMaterialForm(Model model) {
+        model.addAttribute("materials", new Materials());
+        return "add_material";
+    }
+    @PostMapping("/materials_for_admins/add")
+    private String addMaterial(@ModelAttribute Materials materials, Model model) {
+        System.out.println(materials.getPdf_file());
+        return "add_material";
+    }
     /**
      * Метод возвращает из БД список материалов
      * @return массив Materials
