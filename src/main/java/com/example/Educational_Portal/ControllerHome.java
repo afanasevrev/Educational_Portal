@@ -1,7 +1,7 @@
 package com.example.Educational_Portal;
 
 import com.example.Educational_Portal.hibernate.HibernateUtil;
-import com.example.Educational_Portal.hibernate.Materials;
+import com.example.Educational_Portal.db.Materials;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Controller;

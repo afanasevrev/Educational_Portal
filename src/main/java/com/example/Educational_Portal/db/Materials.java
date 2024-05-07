@@ -1,4 +1,4 @@
-package com.example.Educational_Portal.hibernate;
+package com.example.Educational_Portal.db;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -17,8 +17,15 @@ public class Materials {
     private int id;
     @Column(name = "material_name")
     private String material_name;
+    @Lob
+    @Column(name = "pdf_file")
+    private byte[] pdf_id;
     public Materials(){}
     public Materials(String material_name) {
         this.material_name = material_name;
+    }
+    public Materials(String material_name, byte[] pdf_id) {
+        this.material_name = material_name;
+        this.pdf_id = pdf_id;
     }
 }
