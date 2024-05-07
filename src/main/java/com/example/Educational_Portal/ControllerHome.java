@@ -42,8 +42,14 @@ public class ControllerHome {
         return "materials";
     }
     @GetMapping("/materials_for_admins")
-    private String getMaterialsForAdmins(){
-        return null;
+    private String getMaterialsForAdmins(Model model) {
+        List<Materials> materials = getMaterialsList();
+        List<MaterialsTemp> materialsTemp = new ArrayList<>();
+        for (Materials material: materials) {
+            materialsTemp.add(new MaterialsTemp(material.getId(), material.getMaterial_name()));
+        }
+        model.addAttribute("materialsTemp", materialsTemp);
+        return "materialsTemp";
     }
     /**
      * Страница для администраторов системы
