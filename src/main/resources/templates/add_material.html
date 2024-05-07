@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Добавить материал</title>
+    <!-- <link type="text/css" rel ="stylesheet" th:href="@{css/bootstrap_styles.css}"> -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
+<div class="container mt-5">
+    <h2>Добавьте новый учебный материал</h2>
+    <form th:action="@{/materials_for_admins/add}" th:object="${materials}" method="post">
+        <div class="form-group">
+            <label for="material_nameField">Наименование материала</label>
+            <input type="text" class="form-control" id="material_nameField" th:field="*{material_name}" placeholder="Введите тия файла">
+        </div>
+        <div class="form-group">
+            <label for="pdf_fileField">Файл pdf</label>
+            <input type="text" class="form-control" id="pdf_fileField" th:field="*{pdf_file}" placeholder="Выберите файл">
+        </div>
+        <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
