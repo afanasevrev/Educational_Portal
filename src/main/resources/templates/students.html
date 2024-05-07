@@ -20,10 +20,13 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="materialTemp : ${materialsTemp}">
-            <td th:text="${materialTemp.id}"/>
-            <td th:text="${materialTemp.material_name}"/>
-            <td><a class="btn btn-secondary" th:href="@{'/download/' + ${materialTemp.id}}">Скачать</a></td>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.id}"/>
+            <td th:text="${student.surname}"/>
+            <td th:text="${student.name}"/>
+            <td th:text="${student.patronymic}"/>
+            <td th:text="${student.faculty}"/>
+            <td><a class="btn btn-secondary" th:href="@{'/students/delete/' + ${student.id}}">Отчислить</a></td>
         </tr>
         </tbody>
     </table>
