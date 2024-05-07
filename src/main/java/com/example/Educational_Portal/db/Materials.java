@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 /**
- * Класс сущность для взаимодетйствия с таблице "materials" в БД
+ * Класс сущность для взаимодетйствия с таблицей "materials" в БД
  */
 @Setter
 @Getter
