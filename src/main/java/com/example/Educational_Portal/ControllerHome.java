@@ -19,14 +19,19 @@ import java.util.List;
  */
 @Controller
 public class ControllerHome {
+    /**
+     * Главная страница сайта
+     * @return home_page.html
+     */
     @GetMapping("/")
     private String getInfo() {
         return "home_page";
     }
-    @GetMapping("/static/css/stylesheet.css")
-    private String getCSS() {
-        return "stylesheet";
-    }
+    /**
+     * Страница со списком учебных материалов
+     * @param model список материалов
+     * @return materials.html
+     */
     @GetMapping("/materials")
     private String getMaterials(Model model) {
         List<Materials> materials = getMaterialsList();
