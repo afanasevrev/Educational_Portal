@@ -67,7 +67,8 @@ public class ControllerHome {
      * @return add_admin.html
      */
     @GetMapping("/admins_page/add")
-    private String addAdminForm() {
+    private String addAdminForm(Model model) {
+        model.addAttribute("admins", new Admins());
         return "add_admin";
     }
     /**
@@ -84,6 +85,7 @@ public class ControllerHome {
     }
     @PostMapping("/admins_page/add/admin")
     private String addAdmin(@PathVariable Admins admins, Model model) {
+        System.out.println(admins.getName());
         return "admins_page";
     }
     /**

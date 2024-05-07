@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Добавить администратора</title>
-    <!-- Подключение Bootstrap CSS через CDN -->
-    <link type="text/css" rel ="stylesheet" th:href="@{css/bootstrap_styles.css}">
-    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- <link type="text/css" rel ="stylesheet" th:href="@{css/bootstrap_styles.css}"> -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container mt-5">
@@ -13,9 +12,9 @@
     <!-- Форма с использованием Thymeleaf -->
     <form action="#" th:action="@{/admins_page/add/admin}" th:object="${admins}" method="post">
         <div class="form-group">
-            <label>Фамилия</label>
+            <label for="surnameField">Фамилия</label>
             <!-- Связывание поля ввода с полем surname в модели данных на сервере -->
-            <input type="text" class="form-control" th:field="*{surname}" placeholder="Введите фамилию">
+            <input type="text" class="form-control" id="surnameField" th:field="*{surname}" placeholder="Введите фамилию">
         </div>
         <div class="form-group">
             <label for="nameField">Имя</label>
