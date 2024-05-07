@@ -86,7 +86,7 @@ public class ControllerHome {
     @PostMapping("/admins_page/add/admin")
     private String addAdmin(@PathVariable Admins admins, Model model) {
         System.out.println(admins.getName());
-        return "admins_page";
+        return "home_page";
     }
     /**
      * Метод возвращает из БД список материалов
