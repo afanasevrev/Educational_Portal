@@ -3,6 +3,9 @@ package com.example.Educational_Portal.db;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+/**
+ * Класс сущность для администраторов системы
+ */
 @Setter
 @Getter
 @Entity
