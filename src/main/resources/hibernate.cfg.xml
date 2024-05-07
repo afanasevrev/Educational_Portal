@@ -10,5 +10,7 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
         <mapping class="com.example.Educational_Portal.db.Materials"/>
+        <mapping class="com.example.Educational_Portal.db.Students"/>
+        <mapping class="com.example.Educational_Portal.db.Admins"/>
     </session-factory>
 </hibernate-configuration>
