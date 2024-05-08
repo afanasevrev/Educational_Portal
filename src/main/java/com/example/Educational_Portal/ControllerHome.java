@@ -151,7 +151,7 @@ public class ControllerHome {
         int studentId = Integer.parseInt(id);
         deleteStudent(studentId);
         //String result = restTemplate.getForObject(url, String.class);
-        return "/students";
+        return "students";
     }
     /**
      * Метод возвращает из БД список материалов
