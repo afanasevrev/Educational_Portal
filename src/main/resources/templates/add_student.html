@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Добавить студента</title>
+    <!-- <link type="text/css" rel ="stylesheet" th:href="@{css/bootstrap_styles.css}"> -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<div class="container mt-5">
+    <h2>Добавьте нового студента</h2>
+    <!-- Форма с использованием Thymeleaf -->
+    <form th:action="@{/admins_page/student/add}" th:object="${students}" method="post">
+        <div class="form-group">
+            <label for="surnameField">Фамилия</label>
+            <!-- Связывание поля ввода с полем surname в модели данных на сервере -->
+            <input type="text" class="form-control" id="surnameField" th:field="*{surname}" placeholder="Введите фамилию">
+        </div>
+        <div class="form-group">
+            <label for="nameField">Имя</label>
+            <input type="text" class="form-control" id="nameField" th:field="*{name}" placeholder="Введите имя">
+        </div>
+        <div class="form-group">
+            <label for="patronymicField">Отчество</label>
+            <input type="text" class="form-control" id="patronymicField" th:field="*{patronymic}" placeholder="Введите отчество">
+        </div>
+        <div class="form-group">
+            <label for="facultyField">Факультет</label>
+            <input type="text" class="form-control" id="facultyField" th:field="*{faculty}" placeholder="Введите факультет">
+        </div>
+        <div class="form-group">
+            <label for="loginField">Логин</label>
+            <input type="text" class="form-control" id="loginField" th:field="*{login}" placeholder="Введите логин">
+        </div>
+        <div class="form-group">
+            <label for="passwordField">Пароль</label>
+            <input type="password" class="form-control" id="passwordField" th:field="*{password}" placeholder="Введите пароль">
+        </div>
+        <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
