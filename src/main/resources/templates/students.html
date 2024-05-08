@@ -26,7 +26,7 @@
             <td th:text="${student.name}"/>
             <td th:text="${student.patronymic}"/>
             <td th:text="${student.faculty}"/>
-            <td><a class="btn btn-secondary" method = "post" th:object="${students}" th:action="@{/students}">Отчислить</a></td>
+            <td><a class="btn btn-secondary" th:href="@{'/students/delete/' + ${student.id}}">Отчислить</a></td>
         </tr>
         </tbody>
     </table>

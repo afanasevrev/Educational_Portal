@@ -1,19 +1,15 @@
 package com.example.Educational_Portal;
 
 import com.example.Educational_Portal.Temp.MaterialsTemp;
-import com.example.Educational_Portal.Temp.Student;
 import com.example.Educational_Portal.db.Admins;
 import com.example.Educational_Portal.db.Students;
 import com.example.Educational_Portal.hibernate.HibernateUtil;
 import com.example.Educational_Portal.db.Materials;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
-
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -143,15 +139,13 @@ public class ControllerHome {
     }
     /**
      * Метод удаляет из БД студента
-     * @param students
-     * @param model
-     * @return
+     * @param id
+     * @return students.html
      */
-    @PostMapping("/students")
-    private String deleteStudent(@ModelAttribute Students students, Model model) {
-        //int studentId = Integer.parseInt(student.getId());
-        //deleteStudent(studentId);
-        System.out.println(students.getId());
+    @GetMapping("/students/delete/{id}")
+    private String deleteStudent(@PathVariable String id) {
+        int studentId = Integer.parseInt(id);
+        deleteStudent(studentId);
         return "students";
     }
     /**
