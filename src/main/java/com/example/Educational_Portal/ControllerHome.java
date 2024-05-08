@@ -7,17 +7,20 @@ import com.example.Educational_Portal.hibernate.HibernateUtil;
 import com.example.Educational_Portal.db.Materials;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  * Контроллер - отвечает на запросы пользователей через браузер
  */
 @Controller
 public class ControllerHome {
+    private RestTemplate restTemplate;
     /**
      * Главная страница сайта
      * @return home_page.html
@@ -137,6 +140,19 @@ public class ControllerHome {
     private String addStudent(@ModelAttribute Students students, Model model) {
         writeStudent(students);
         return "add_student";
+    }
+    /**
+     * Метод удаляет из БД студента
+     * @param id
+     * @return
+     */
+    @GetMapping("/students/delete/{id}")
+    private String deleteStudent(@PathVariable String id, Model model) {
+        String url = "http://localhost:8080/students";
+        int studentId = Integer.parseInt(id);
+        deleteStudent(studentId);
+        String result = restTemplate.getForObject(url, String.class);
+        return result;
     }
     /**
      * Метод возвращает из БД список материалов
