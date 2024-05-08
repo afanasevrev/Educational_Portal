@@ -147,11 +147,9 @@ public class ControllerHome {
      */
     @GetMapping("/students/delete/{id}")
     private String deleteStudent(@PathVariable String id, Model model) {
-        String url = "http://localhost:8080/students";
         int studentId = Integer.parseInt(id);
         deleteStudent(studentId);
-        //String result = restTemplate.getForObject(url, String.class);
-        return "students";
+        return "home_page";
     }
     /**
      * Метод возвращает из БД список материалов
