@@ -110,18 +110,29 @@ public class ControllerHome {
      * POST - запрос от администратора системы на добавление материала в БД
      * @param materials
      * @param model
-     * @return
+     * @return add_material.html
      */
     @PostMapping("/materials_for_admins/add")
     private String addMaterial(@ModelAttribute Materials materials, Model model) {
         writeMaterial(materials);
         return "add_material";
     }
+    /**
+     * Страница форма для администратора на добавление студента в БД
+     * @param model
+     * @return add_student.html
+     */
     @GetMapping("/admins_page/student/add")
     private String addStudentForm(Model model) {
         model.addAttribute("students", new Students());
         return "add_student";
     }
+    /**
+     * POST - запрос от администратора на добавление студента в БД
+     * @param students
+     * @param model
+     * @return add_student.html
+     */
     @PostMapping("/admins_page/student/add")
     private String addStudent(@ModelAttribute Students students, Model model) {
         writeStudent(students);
