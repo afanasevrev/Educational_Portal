@@ -1,6 +1,7 @@
 package com.example.Educational_Portal;
 
 import com.example.Educational_Portal.Temp.MaterialsTemp;
+import com.example.Educational_Portal.Temp.Student;
 import com.example.Educational_Portal.db.Admins;
 import com.example.Educational_Portal.db.Students;
 import com.example.Educational_Portal.hibernate.HibernateUtil;
@@ -142,14 +143,16 @@ public class ControllerHome {
     }
     /**
      * Метод удаляет из БД студента
-     * @param id
+     * @param students
+     * @param model
      * @return
      */
-    @GetMapping("/students/delete/{id}")
-    private String deleteStudent(@PathVariable String id, Model model) {
-        int studentId = Integer.parseInt(id);
-        deleteStudent(studentId);
-        return "home_page";
+    @PostMapping("/students")
+    private String deleteStudent(@ModelAttribute Students students, Model model) {
+        //int studentId = Integer.parseInt(student.getId());
+        //deleteStudent(studentId);
+        System.out.println(students.getId());
+        return "students";
     }
     /**
      * Метод возвращает из БД список материалов
