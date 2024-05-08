@@ -146,7 +146,7 @@ public class ControllerHome {
     private String deleteStudent(@PathVariable String id) {
         int studentId = Integer.parseInt(id);
         deleteStudent(studentId);
-        return "students";
+        return "home_page";
     }
     /**
      * Метод возвращает из БД список материалов
