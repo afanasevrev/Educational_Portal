@@ -20,7 +20,6 @@ import java.util.List;
  */
 @Controller
 public class ControllerHome {
-    private RestTemplate restTemplate;
     /**
      * Главная страница сайта
      * @return home_page.html
@@ -151,8 +150,8 @@ public class ControllerHome {
         String url = "http://localhost:8080/students";
         int studentId = Integer.parseInt(id);
         deleteStudent(studentId);
-        String result = restTemplate.getForObject(url, String.class);
-        return result;
+        //String result = restTemplate.getForObject(url, String.class);
+        return "/students";
     }
     /**
      * Метод возвращает из БД список материалов
