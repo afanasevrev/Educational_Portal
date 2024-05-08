@@ -117,7 +117,16 @@ public class ControllerHome {
         writeMaterial(materials);
         return "add_material";
     }
-    
+    @GetMapping("/admins_page/student/add")
+    private String addStudentForm(Model model) {
+        model.addAttribute("students", new Students());
+        return "add_student";
+    }
+    @PostMapping("/admins_page/student/add")
+    private String addStudent(@ModelAttribute Students students, Model model) {
+        writeStudent(students);
+        return "add_student";
+    }
     /**
      * Метод возвращает из БД список материалов
      * @return массив Materials
