@@ -117,6 +117,7 @@ public class ControllerHome {
         writeMaterial(materials);
         return "add_material";
     }
+    
     /**
      * Метод возвращает из БД список материалов
      * @return массив Materials
