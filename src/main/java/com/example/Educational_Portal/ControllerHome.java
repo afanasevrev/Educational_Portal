@@ -96,11 +96,22 @@ public class ControllerHome {
         model.addAttribute("students", students);
         return "students";
     }
+    /**
+     * Страница материалов для администраторов
+     * @param model список материалов
+     * @return materials_for_admins.html
+     */
     @GetMapping("/materials_for_admins/add")
     private String addMaterialForm(Model model) {
         model.addAttribute("materials", new Materials());
         return "add_material";
     }
+    /**
+     * POST - запрос от администратора системы на добавление материала в БД
+     * @param materials
+     * @param model
+     * @return
+     */
     @PostMapping("/materials_for_admins/add")
     private String addMaterial(@ModelAttribute Materials materials, Model model) {
         writeMaterial(materials);
