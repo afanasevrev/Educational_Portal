@@ -169,7 +169,7 @@ public class ControllerHome {
      * Метод возвращает из БД список студентов
      * @return массив Students
      */
-    private synchronized List<Students> getStudentsList() {
+    public synchronized List<Students> getStudentsList() {
         Transaction transaction = null;
         List<Students> students = new ArrayList<>();
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
