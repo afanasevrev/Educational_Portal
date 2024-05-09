@@ -111,7 +111,7 @@ public class ControllerHome {
     @GetMapping("/materials_for_admins/add")
     private String addMaterialForm(Model model) {
         model.addAttribute("materials", new Materials());
-        return "add_material";
+        return "addd_material";
     }
     /**
      * POST - запрос от администратора системы на добавление материала в БД

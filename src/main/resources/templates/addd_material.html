@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Загрузить PDF</title>
 </head>
 <body>
-
+<form method="POST" action="/materials_for_admins/add" enctype="multipart/form-data">
+    <input type="file" name="pdfFile" accept="application/pdf">
+    <button type="submit">Загрузить</button>
+</form>
 </body>
 </html>
