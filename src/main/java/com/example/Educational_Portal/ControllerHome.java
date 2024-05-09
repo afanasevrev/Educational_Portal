@@ -135,7 +135,7 @@ public class ControllerHome {
         try {
             byte[] filePDF = file.getBytes();
             System.out.println(filePDF);
-            System.out.println(file.getName());
+            System.out.println(file.getOriginalFilename());
             writeMaterial(new Materials(file.getName(), filePDF));
         } catch (IOException e) {
             throw new RuntimeException(e);
