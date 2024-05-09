@@ -55,6 +55,12 @@ public class ControllerHome {
         model.addAttribute("materialsTemp", materialsTemp);
         return "materials_for_admins";
     }
+    @GetMapping("/materials_for_admins/delete/{id}")
+    private String deleteMaterial(@PathVariable String id, Model model) {
+        int material_id = Integer.parseInt(id);
+        deleteMaterial(material_id);
+        return "material_is_delete";
+    }
     /**
      * Страница для администраторов системы
      * @return admins_page.html
