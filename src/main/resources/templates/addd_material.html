@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Загрузить PDF</title>
 </head>
 <body>
-<form method="POST" action="/materials_for_admins/add" enctype="multipart/form-data">
-    <input type="file" name="pdfFile" accept="application/pdf">
-    <button type="submit">Загрузить</button>
+<form id="uploadForm" method="post" th:action="@{/materials_for_admins/add}" enctype="multipart/form-data">
+    <input id="input-file" type="file" name="file" />
+    <button class="btn btn-sm btn-outline-success float-right" type="submit">
+        Отправить
+    </button>
 </form>
 </body>
 </html>

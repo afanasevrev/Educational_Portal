@@ -113,7 +113,7 @@ public class ControllerHome {
     @GetMapping("/materials_for_admins/add")
     private String addMaterialForm(Model model) {
         model.addAttribute("materials", new Materials());
-        return "add_material";
+        return "addd_material";
     }
     /**
      * POST - запрос от администратора системы на добавление материала в БД
@@ -130,14 +130,17 @@ public class ControllerHome {
     }
     **/
     @PostMapping("/materials_for_admins/add")
-    public ModelAndView handleFileUpload(@RequestParam("file") MultipartFile file) {
+    public String handleFileUpload(@RequestParam("file") MultipartFile file) {
         // Здесь добавьте логику для обработки файла
         try {
             byte[] filePDF = file.getBytes();
+            System.out.println(filePDF);
+            System.out.println(file.getName());
+            writeMaterial(new Materials(file.getName(), filePDF));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return new ModelAndView("redirect:/success"); // Перенаправление или возврат ответа после обработки файла
+        return "addd_material"; // Перенаправление или возврат ответа после обработки файла
     }
     /**
      * Страница форма для администратора на добавление студента в БД
