@@ -9,7 +9,7 @@
 <body>
 <div class="container mt-5">
     <h2>Добавьте новый учебный материал</h2>
-    <form th:action="@{/materials_for_admins/add}" th:object="${materials}" method="post" enctype="multipart/form-data">
+    <form th:action="@{/materials_for_admins/add}" th:object="${materials}" method="post" >
         <div class="form-group">
             <label for="material_nameField">Наименование материала</label>
             <input type="text" class="form-control" id="material_nameField" th:field="*{material_name}" placeholder="Введите имя файла">

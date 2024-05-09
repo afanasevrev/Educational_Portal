@@ -20,7 +20,7 @@
     <tr th:each="materialTemp : ${materialsTemp}">
       <td th:text="${materialTemp.id}"/>
       <td th:text="${materialTemp.material_name}"/>
-      <td><a class="btn btn-secondary" th:href="@{'/materials/delete/' + ${materialTemp.id}}">Удалить</a></td>
+      <td><a class="btn btn-secondary" th:href="@{'/materials_for_admins/delete/' + ${materialTemp.id}}">Удалить</a></td>
     </tr>
     </tbody>
   </table>
