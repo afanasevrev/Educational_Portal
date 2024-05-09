@@ -10,6 +10,8 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -117,10 +119,27 @@ public class ControllerHome {
      * @param model
      * @return add_material.html
      */
+    /**
     @PostMapping("/materials_for_admins/add")
     private String addMaterial(@ModelAttribute Materials materials, Model model) {
         writeMaterial(materials);
         return "add_material";
+    }
+    **/
+    @PostMapping("/materials_for_admins/add")
+    public String handleFileUpload(@RequestParam("pdfFile") MultipartFile file) {
+        if (!file.isEmpty()) {
+            try {
+                byte[] bytes = file.getBytes();
+                // Здесь вы можете работать с массивом байтов (например, сохранить его в БД или в файловой системе)
+                System.out.println(bytes.toString());
+                return "redirect:uploadSuccess"; // Вернуть имя представления для успешной загрузки
+            } catch (Exception e) {
+                return "redirect:uploadFailure"; // Вернуть имя представления при ошибке загрузки
+            }
+        } else {
+            return "redirect:uploadFailure";
+        }
     }
     /**
      * Страница форма для администратора на добавление студента в БД
