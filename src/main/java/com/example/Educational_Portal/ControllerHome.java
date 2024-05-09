@@ -11,7 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -111,7 +113,7 @@ public class ControllerHome {
     @GetMapping("/materials_for_admins/add")
     private String addMaterialForm(Model model) {
         model.addAttribute("materials", new Materials());
-        return "addd_material";
+        return "add_material";
     }
     /**
      * POST - запрос от администратора системы на добавление материала в БД
@@ -122,24 +124,20 @@ public class ControllerHome {
     /**
     @PostMapping("/materials_for_admins/add")
     private String addMaterial(@ModelAttribute Materials materials, Model model) {
+        System.out.println(materials.getPdf_file());
         writeMaterial(materials);
         return "add_material";
     }
     **/
     @PostMapping("/materials_for_admins/add")
-    public String handleFileUpload(@RequestParam("pdfFile") MultipartFile file) {
-        if (!file.isEmpty()) {
-            try {
-                byte[] bytes = file.getBytes();
-                // Здесь вы можете работать с массивом байтов (например, сохранить его в БД или в файловой системе)
-                System.out.println(bytes.toString());
-                return "redirect:uploadSuccess"; // Вернуть имя представления для успешной загрузки
-            } catch (Exception e) {
-                return "redirect:uploadFailure"; // Вернуть имя представления при ошибке загрузки
-            }
-        } else {
-            return "redirect:uploadFailure";
+    public ModelAndView handleFileUpload(@RequestParam("file") MultipartFile file) {
+        // Здесь добавьте логику для обработки файла
+        try {
+            byte[] filePDF = file.getBytes();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+        return new ModelAndView("redirect:/success"); // Перенаправление или возврат ответа после обработки файла
     }
     /**
      * Страница форма для администратора на добавление студента в БД
