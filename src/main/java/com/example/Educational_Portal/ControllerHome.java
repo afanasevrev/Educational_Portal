@@ -163,6 +163,8 @@ public class ControllerHome {
         deleteStudent(studentId);
         return "student_dismiss";
     }
+    @GetMapping("materials/download/{id}")
+    
     /**
      * Метод возвращает из БД список материалов
      * @return массив Materials
