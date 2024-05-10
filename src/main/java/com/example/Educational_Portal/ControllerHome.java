@@ -117,26 +117,15 @@ public class ControllerHome {
     }
     /**
      * POST - запрос от администратора системы на добавление материала в БД
-     * @param materials
-     * @param model
+     * @param file
      * @return add_material.html
      */
-    /**
-    @PostMapping("/materials_for_admins/add")
-    private String addMaterial(@ModelAttribute Materials materials, Model model) {
-        System.out.println(materials.getPdf_file());
-        writeMaterial(materials);
-        return "add_material";
-    }
-    **/
     @PostMapping("/materials_for_admins/add")
     public String handleFileUpload(@RequestParam("file") MultipartFile file) {
         // Здесь добавьте логику для обработки файла
         try {
             byte[] filePDF = file.getBytes();
-            System.out.println(filePDF);
-            System.out.println(file.getOriginalFilename());
-            writeMaterial(new Materials(file.getName(), filePDF));
+            writeMaterial(new Materials(file.getOriginalFilename(), filePDF));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -347,5 +336,27 @@ public class ControllerHome {
             }
             e.printStackTrace();
         }
+    }
+    /**
+     * Возвращает учебный материал по ID
+     * @param id
+     * @return material
+     */
+    private synchronized Materials getMaterialId(int id) {
+        Transaction transaction = null;
+        Materials material = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            material = session.get(Materials.class, id);
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return material;
     }
 }
