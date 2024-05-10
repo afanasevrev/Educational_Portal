@@ -7,12 +7,12 @@ import com.example.Educational_Portal.hibernate.HibernateUtil;
 import com.example.Educational_Portal.db.Materials;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -163,8 +163,13 @@ public class ControllerHome {
         deleteStudent(studentId);
         return "student_dismiss";
     }
-    @GetMapping("materials/download/{id}")
-    
+    @GetMapping("/materials/download/{id}")
+    private ResponseEntity<byte[]> downloadDocument(@PathVariable String id) {
+        int documentId = Integer.parseInt(id);
+        byte[] resource = getMaterialId(documentId).getPdf_file();
+
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=material.pdf").body(resource);
+    }
     /**
      * Метод возвращает из БД список материалов
      * @return массив Materials
