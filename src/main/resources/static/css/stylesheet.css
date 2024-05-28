@@ -44,4 +44,10 @@ body, html {
         background-color: #4CAF50;
         color: white;
     }
+    .my-block {
+                border: 1px solid #000;
+                padding: 20px;
+                margin: 70px;
+                background-color: #29a9d8;
+              }
     
