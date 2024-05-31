@@ -2,7 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Учебные материалы</title>
     <link type="text/css" rel ="stylesheet" th:href="@{css/bootstrap_styles.css}">
     <style>
@@ -20,23 +19,16 @@
         <tr>
             <td>ID</td>
             <td>Наименование</td>
-            <td>Действие</td>
         </tr>
         </thead>
         <tbody>
         <tr th:each="materialTemp : ${materialsTemp}">
-            <td th:text="${materialTemp.id}"></td>
-            <td th:text="${materialTemp.material_name}"></td>
-            <td>
-                <a class="btn btn-secondary btn-block" th:href="@{'/materials/download/' + ${materialTemp.id}}">Скачать</a>
-            </td>
+            <td th:text="${materialTemp.id}"/>
+            <td th:text="${materialTemp.material_name}"/>
+            <td><a class="btn btn-secondary" th:href="@{'/materials/download/' + ${materialTemp.id}}">Скачать</a></td>
         </tr>
         </tbody>
     </table>
 </div>
-
-<!-- Include Bootstrap's JS and jQuery if not already included in the project -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

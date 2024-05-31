@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Учебные материалы</title>
+  <link type="text/css" rel ="stylesheet" th:href="@{css/bootstrap_styles.css}">
+  <style>
+        body {
+            background-color: #c8ffc8;
+        }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Список учебных материалов</h1>
+  <span th:if="${materialsTemp.size() == 0}">Список материалов пустой</span>
+  <table th:if="${materialsTemp.size() > 0}" class="table table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <td>ID</td>
+      <td>Наименование</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="materialTemp : ${materialsTemp}">
+      <td th:text="${materialTemp.id}"/>
+      <td th:text="${materialTemp.material_name}"/>
+      <td><a class="btn btn-secondary" th:href="@{'/materials_for_admins/delete/' + ${materialTemp.id}}">Удалить</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

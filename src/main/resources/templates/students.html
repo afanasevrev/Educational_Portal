@@ -2,8 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Студенты</title>
-    <!-- <link type="text/css" rel ="stylesheet" th:href="@{css/bootstrap_styles.css}"> -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -13,29 +13,33 @@
 </head>
 <body>
 <div class="container">
-    <h1>Список студентов</h1>
+    <h1 class="mt-4">Список студентов</h1>
     <span th:if="${students.size() == 0}">Список студентов пустой</span>
-    <table th:if="${students.size() > 0}" class="table table-hover">
+    <table th:if="${students.size() > 0}" class="table table-hover mt-3">
         <thead class="thead-dark">
         <tr>
-            <td>ID</td>
-            <td>Фамилия</td>
-            <td>Имя</td>
-            <td>Отчество</td>
-            <td>Специальность</td>
+            <th>ID</th>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Специальность</th>
+            <th>Действие</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="student : ${students}">
-            <td th:text="${student.id}"/>
-            <td th:text="${student.surname}"/>
-            <td th:text="${student.name}"/>
-            <td th:text="${student.patronymic}"/>
-            <td th:text="${student.faculty}"/>
-            <td><a class="btn btn-secondary" th:href="@{'/students/delete/' + ${student.id}}">Отчислить</a></td>
+            <td th:text="${student.id}"></td>
+            <td th:text="${student.surname}"></td>
+            <td th:text="${student.name}"></td>
+            <td th:text="${student.patronymic}"></td>
+            <td th:text="${student.faculty}"></td>
+            <td><a class="btn btn-secondary btn-sm" th:href="@{'/students/delete/' + ${student.id}}">Отчислить</a></td>
         </tr>
         </tbody>
     </table>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

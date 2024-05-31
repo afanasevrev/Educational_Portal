@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Студенты</title>
+    <!-- <link type="text/css" rel ="stylesheet" th:href="@{css/bootstrap_styles.css}"> -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #c8ffc8;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Список студентов</h1>
+    <span th:if="${students.size() == 0}">Список студентов пустой</span>
+    <table th:if="${students.size() > 0}" class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <td>ID</td>
+            <td>Фамилия</td>
+            <td>Имя</td>
+            <td>Отчество</td>
+            <td>Специальность</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.id}"/>
+            <td th:text="${student.surname}"/>
+            <td th:text="${student.name}"/>
+            <td th:text="${student.patronymic}"/>
+            <td th:text="${student.faculty}"/>
+            <td><a class="btn btn-secondary" th:href="@{'/students/delete/' + ${student.id}}">Отчислить</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

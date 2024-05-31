@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Учебные материалы</title>
-  <link type="text/css" rel ="stylesheet" th:href="@{css/bootstrap_styles.css}">
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Учебные материалы</title>
+    <link rel="stylesheet" th:href="@{css/bootstrap_styles.css}">
+    <style>
         body {
             background-color: #c8ffc8;
         }
-  </style>
+    </style>
 </head>
 <body>
 <div class="container">
-  <h1>Список учебных материалов</h1>
-  <span th:if="${materialsTemp.size() == 0}">Список материалов пустой</span>
-  <table th:if="${materialsTemp.size() > 0}" class="table table-hover">
-    <thead class="thead-dark">
-    <tr>
-      <td>ID</td>
-      <td>Наименование</td>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="materialTemp : ${materialsTemp}">
-      <td th:text="${materialTemp.id}"/>
-      <td th:text="${materialTemp.material_name}"/>
-      <td><a class="btn btn-secondary" th:href="@{'/materials_for_admins/delete/' + ${materialTemp.id}}">Удалить</a></td>
-    </tr>
-    </tbody>
-  </table>
+    <h1 class="mt-4">Список учебных материалов</h1>
+    <span th:if="${materialsTemp.size() == 0}">Список материалов пустой</span>
+    <table th:if="${materialsTemp.size() > 0}" class="table table-hover mt-3">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Наименование</th>
+            <th>Действие</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="materialTemp : ${materialsTemp}">
+            <td th:text="${materialTemp.id}"></td>
+            <td th:text="${materialTemp.material_name}"></td>
+            <td><a class="btn btn-secondary btn-sm" th:href="@{'/materials_for_admins/delete/' + ${materialTemp.id}}">Удалить</a></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
